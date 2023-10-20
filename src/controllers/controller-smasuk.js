@@ -12,7 +12,7 @@ module.exports = {
     getDatasmasuk(req, res) {
         pool.getConnection(function (err, connection) {
             if (err) throw err;
-            const query = 'SELECT * FROM smasuk';
+            const query = 'SELECT * FROM surat_masuk';
             connection.query(query, function (err, result) {
                 if (err) throw err;
 
@@ -31,7 +31,7 @@ module.exports = {
         const no = req.params.no;
         pool.getConnection(function (err, connection) {
             if (err) throw err;
-            const query = 'SELECT * FROM smasuk WHERE no = ? ';
+            const query = 'SELECT * FROM surat_masuk WHERE no = ? ';
             connection.query(query ,[no], function (err, result) {
                 if (err) throw err;
 
@@ -60,7 +60,7 @@ module.exports = {
         pool.getConnection(function (err, connection) {
             if (err) console.log(err);
 
-            const query = 'INSERT INTO smasuk (tanggal_masuk, no_surat ,tanggal_surat , pengirim , perihal, ditujukan) VALUES (?, ?, ?, ?, ?, ?)';
+            const query = 'INSERT INTO surat_masuk (tanggal_masuk, no_surat ,tanggal_surat , pengirim , perihal, ditujukan) VALUES (?, ?, ?, ?, ?, ?)';
             connection.query(query, [ 
                 tanggal_masuk,
                 no_surat,
@@ -97,7 +97,7 @@ module.exports = {
         pool.getConnection(function (err, connection) {
             if (err) throw err;
 
-            const query = 'UPDATE smasuk SET ? WHERE no = ? ';
+            const query = 'UPDATE surat_masuk SET ? WHERE no = ? ';
             connection.query(query, [data, no], function (err, result) {
                 if (err) throw err;
 
@@ -121,7 +121,7 @@ module.exports = {
         pool.getConnection(function (err, connection) {
             if (err) throw err;
 
-            const query = 'DELETE FROM smasuk WHERE no = ?';
+            const query = 'DELETE FROM surat_masuk WHERE no = ?';
             connection.query(query, [no], function (err, result) {
                 if (err) throw err;
 
