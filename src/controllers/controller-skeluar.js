@@ -31,7 +31,7 @@ module.exports = {
         const no = req.params.no;
         pool.getConnection(function (err, connection) {
             if (err) throw err;
-            const query = 'SELECT * FROM ruangan WHERE no = ? ';
+            const query = 'SELECT * FROM skeluar WHERE no = ? ';
             connection.query(query ,[no], function (err, result) {
                 if (err) throw err;
 
