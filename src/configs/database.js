@@ -8,9 +8,9 @@
 
 module.exports = {
     multipleStatements: true,
-    host: 'containers-us-west-192.railway.app',
+    host: 'containers-us-west-187.railway.app',
     user: 'railway',
-    password: 'W1mSB70uMZo8yH4cYjnM',
+    password: '6p5YfZENAMoE0egD0zAQ',
     database: 'railway',
-    port: 7891,
+    port: 7020,
 }

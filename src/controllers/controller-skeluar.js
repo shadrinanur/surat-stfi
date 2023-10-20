@@ -9,10 +9,10 @@ pool.on('error', (err) => {
 
 module.exports = {
     
-    getDatas(req, res) {
+    getDataskeluar(req, res) {
         pool.getConnection(function (err, connection) {
             if (err) throw err;
-            const query = 'SELECT * FROM smasuk';
+            const query = 'SELECT * FROM skeluar';
             connection.query(query, function (err, result) {
                 if (err) throw err;
 
@@ -32,7 +32,7 @@ module.exports = {
         pool.getConnection(function (err, connection) {
             if (err) throw err;
             const query = 'SELECT * FROM ruangan WHERE no = ? ';
-            connection.query(query ,[id_ruangan], function (err, result) {
+            connection.query(query ,[no], function (err, result) {
                 if (err) throw err;
 
                 res.send({
@@ -46,28 +46,28 @@ module.exports = {
         })
     },
 
-    addDatasmasuk(req, res) {
+    addDataskeluar(req, res) {
         // parse data
         const {
-            tanggal_masuk,
+            no,
+            tanggal,
             no_surat,
-            tanggal_surat,
-            pengirim,
             perihal,
             ditujukan,
+            keterangan,
         } = req.body
 
         pool.getConnection(function (err, connection) {
             if (err) console.log(err);
 
-            const query = 'INSERT INTO smasuk (tanggal_masuk, no_surat, pengirim ,perihal, ditujukan) VALUES (?, ?, ?, ?, ?, ?)';
+            const query = 'INSERT INTO skeluar (no, tanggal, no_surat, perihal, ditujukan, keterangan) VALUES (?, ?, ?, ?, ?, ?)';
             connection.query(query, [
-                tanggal_masuk,
-                no_surat,
-                tanggal_surat,
-                pengirim,
-                perihal,
-                ditujukan,
+            no,
+            tanggal,
+            no_surat,
+            perihal,
+            ditujukan,
+            keterangan,
                 cover], function (err, result) {
                     if (err) console.log(err);
 
@@ -81,23 +81,23 @@ module.exports = {
         })
     },
 
-    editDatasmasuk(req, res) {
+    editDataskeluar(req, res) {
         const no = req.params.no;
 
         // parse data
         const data = {
-            tanggal_masuk : req.body.tanggal_masuk,
-            no_surat : req.body.no_surat,
-            tanggal_surat : req.body.tanggal_surat,
-            pengirim : req.body.pengirim,
-            perihal : req.body.perihal,
-            ditujukan : req.body.ditujukan,
+            no,
+            tanggal,
+            no_surat,
+            perihal,
+            ditujukan,
+            keterangan
         }
 
         pool.getConnection(function (err, connection) {
             if (err) throw err;
 
-            const query = 'UPDATE ruangan SET ? WHERE no = ? ';
+            const query = 'UPDATE skeluar SET ? WHERE no = ? ';
             connection.query(query, [data, no], function (err, result) {
                 if (err) throw err;
 
@@ -115,13 +115,13 @@ module.exports = {
         })
     },
 
-    deleteDatasmasuk(req, res) {
+    deleteDataskeluar(req, res) {
         const no = req.params.no;
 
         pool.getConnection(function (err, connection) {
             if (err) throw err;
 
-            const query = 'DELETE FROM ruangan WHERE no = ?';
+            const query = 'DELETE FROM skeluar WHERE no = ?';
             connection.query(query, [no], function (err, result) {
                 if (err) throw err;
 

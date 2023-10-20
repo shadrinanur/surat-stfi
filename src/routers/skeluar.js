@@ -5,7 +5,7 @@ const { skeluar } = require('../controllers');
 router.get('/', skeluar.getDataskeluar);
 
 // //Get localhost:8080/produk/2 => Ambil data semua produk berdasarkan id = 2
-// router.get('/:id', produk.getDetailProduk);
+router.get('/:no', produk.getDetailskeluar);
 
 // POST lcalhost:8080/produk/add => Tambah data produk ke database
 router.post('/add', skeluar.addDataskeluar);
@@ -18,9 +18,3 @@ router.delete('/delete/:no', skeluar.deleteDataskeluar);
 
 module.exports = router;
 
-// no : req.body.no,
-// tanggal : req.body.tanggal,
-// no_surat : req.body.no_surat,
-// perihal : req.body.perihal,
-// ditujukan : req.body.ditujukan,
-// keterangan : req.body.keterangan,

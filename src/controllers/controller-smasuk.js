@@ -31,8 +31,8 @@ module.exports = {
         const no = req.params.no;
         pool.getConnection(function (err, connection) {
             if (err) throw err;
-            const query = 'SELECT * FROM ruangan WHERE no = ? ';
-            connection.query(query ,[id_ruangan], function (err, result) {
+            const query = 'SELECT * FROM smasuk WHERE no = ? ';
+            connection.query(query ,[no], function (err, result) {
                 if (err) throw err;
 
                 res.send({
@@ -86,18 +86,18 @@ module.exports = {
 
         // parse data
         const data = {
-            tanggal_masuk : req.body.tanggal_masuk,
-            no_surat : req.body.no_surat,
-            tanggal_surat : req.body.tanggal_surat,
-            pengirim : req.body.pengirim,
-            perihal : req.body.perihal,
-            ditujukan : req.body.ditujukan,
+                tanggal_masuk,
+                no_surat,
+                tanggal_surat,
+                pengirim,
+                perihal,
+                ditujukan,
         }
 
         pool.getConnection(function (err, connection) {
             if (err) throw err;
 
-            const query = 'UPDATE ruangan SET ? WHERE no = ? ';
+            const query = 'UPDATE smasuk SET ? WHERE no = ? ';
             connection.query(query, [data, no], function (err, result) {
                 if (err) throw err;
 
@@ -121,7 +121,7 @@ module.exports = {
         pool.getConnection(function (err, connection) {
             if (err) throw err;
 
-            const query = 'DELETE FROM ruangan WHERE no = ?';
+            const query = 'DELETE FROM smasuk WHERE no = ?';
             connection.query(query, [no], function (err, result) {
                 if (err) throw err;
 
