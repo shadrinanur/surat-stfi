@@ -60,7 +60,7 @@ module.exports = {
         pool.getConnection(function (err, connection) {
             if (err) console.log(err);
 
-            const query = 'INSERT INTO smasuk (tanggal_masuk, no_surat, pengirim ,perihal, ditujukan) VALUES (?, ?, ?, ?, ?, ?)';
+            const query = 'INSERT INTO smasuk (tanggal_masuk, no_surat,tanggal_surat ,pengirim ,perihal, ditujukan) VALUES (?, ?, ?, ?, ?, ?)';
             connection.query(query, [
                 tanggal_masuk,
                 no_surat,
