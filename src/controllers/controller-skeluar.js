@@ -27,7 +27,7 @@ module.exports = {
         })
     },
 
-    getDetailsmasuk(req, res) {
+    getDetailskeluar(req, res) {
         const no = req.params.no;
         pool.getConnection(function (err, connection) {
             if (err) throw err;

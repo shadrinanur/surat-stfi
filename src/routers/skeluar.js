@@ -5,7 +5,7 @@ const { skeluar } = require('../controllers');
 router.get('/', skeluar.getDataskeluar);
 
 // //Get localhost:8080/produk/2 => Ambil data semua produk berdasarkan id = 2
-router.get('/:no', produk.getDetailskeluar);
+router.get('/:no', skeluar.getDetailskeluar);
 
 // POST lcalhost:8080/produk/add => Tambah data produk ke database
 router.post('/add', skeluar.addDataskeluar);
