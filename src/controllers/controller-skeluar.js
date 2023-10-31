@@ -86,12 +86,12 @@ module.exports = {
 
         // parse data
         const data = {
-            no,
-            tanggal,
-            no_surat,
-            perihal,
-            ditujukan,
-            keterangan
+            no: req.body.no,
+            tanggal: req.body.tanggal,
+            no_surat: req.body.no_surat,
+            perihal: req.body.perihal,
+            ditujukan: req.body.ditujukan,
+            keterangan: req.body.keterangan,
         }
 
         pool.getConnection(function (err, connection) {
